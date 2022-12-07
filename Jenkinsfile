@@ -9,7 +9,7 @@ pipeline {
                     /* groovylint-disable-next-line LineLength, NestedBlockDepth */
                         withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                             sh """
-                                    docker build -f Dockerfile . -t engboda/project:${BUILD_NUMBER}
+                                    docker build -f App/html/dockerfile . -t engboda/project:${BUILD_NUMBER}
                                     docker login -u ${USERNAME} -p ${PASSWORD}
                                     docker push engboda/project:${BUILD_NUMBER}
                                     echo ${BUILD_NUMBER} > ../vars.txt
