@@ -6,7 +6,6 @@ pipeline {
             steps {
                 script{
                     /* groovylint-disable-next-line NestedBlockDepth */
-                    if (env.BRANCH_NAME == 'master') {
                     /* groovylint-disable-next-line LineLength, NestedBlockDepth */
                         withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                             sh """
@@ -16,7 +15,6 @@ pipeline {
                                     echo ${BUILD_NUMBER} > ../vars.txt
 
                                 """
-                        }
                     }
                 }
             }
